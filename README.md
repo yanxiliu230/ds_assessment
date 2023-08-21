@@ -36,4 +36,4 @@ Here we are testing our gradient descent algorithm on randomly generated vectors
 
 The algorithms clearly fails at high learning rate till around 0.001. In these cases, the gradient descent overshoots and misses the real solution. With a big step size, every time we update the estimates for b, we change by a lot. But again, whether or not the algorithm overshoots also depends on the starting point we chooses. Here we did not test multiple starting points.
 
-![](Figs/unnamed-chunk-12-1.png)<!-- -->
+![](Figs/unnamed-chunk-11-1.png)<!-- -->
