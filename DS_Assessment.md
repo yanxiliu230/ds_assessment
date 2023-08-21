@@ -114,23 +114,26 @@ ggplot(data=t[t$`Death toll` < 2000000,], aes(x=Year, y=`Death toll`, fill=Type)
 
 ``` r
 gradient_descent <- function(x, y, 
-                             e = 0.001, 
-                             b_cur = 0.1, 
-                             threshold = 1e-5, 
-                             steps = 100000) {
+                             e = 0.001,        # learning rates
+                             b_cur = 0.1,      # starting estimate of b
+                             threshold = 1e-5, # stopping threshold
+                             steps = 100000    # maximum number of steps in case of infinite loop
+) {
   i <- 1
   for (i in seq_len(steps)) {
-    y_pred <- b_cur * x
-    l_derivative <- -2 * sum(x * (y-y_pred))
-    b_prev <- b_cur
-    b_cur <- b_cur - e * l_derivative
-    if (b_cur - b_prev < threshold) {
+    y_pred <- b_cur * x                         # predicted y values
+    l_derivative <- -2 * sum(x * (y-y_pred))    # derivative of loss function
+    b_prev <- b_cur                             # saving the value of current b value
+    b_cur <- b_cur - e * l_derivative           # update estimate of b with gradient descnet
+    if (b_cur - b_prev < threshold) {           # test if threshold has been met
       break
     }
   }
-  c(b_cur, i)
+  c(b_cur, i)                                   # output
 }
 ```
+
+Here we are testing our gradient descent function with a random generated vector of 10 numbers, and set gradient to be 3
 
 ``` r
 # test
@@ -146,7 +149,7 @@ e_vec <- c(seq(from = 0.1, by = -0.02, length.out = 5),
            seq(from = 0.01, by = -0.002, length.out = 5),
            seq(from = 0.001, by = -0.0002, length.out = 5),
            seq(from = 0.0001, by = -0.00002, length.out = 5),
-           seq(from = 0.00001, by = -0.000002, length.out = 5))
+           seq(from = 0.00001, by = -0.000002, length.out = 5))   # learning rates
 
 b <- c()
 steps <- c()
@@ -155,23 +158,7 @@ for (i in e_vec) {
   b <- c(b, gradient_descent(x, y, e = i)[1])
   steps <- c(steps, gradient_descent(x, y, e = i)[2])
 }
-b
-```
 
-    ##  [1] -2.603673e+05 -1.663560e+05 -9.331366e+04 -4.124019e+04 -1.013560e+04
-    ##  [6] -2.446641e+03 -1.537915e+03 -8.388778e+02 -3.495297e+02 -6.987043e+01
-    ## [11] -8.674109e+00 -2.725511e+00  1.126200e+00  2.881021e+00  2.999997e+00
-    ## [16]  2.999978e+00  2.999972e+00  2.999958e+00  2.999930e+00  2.999849e+00
-    ## [21]  2.999685e+00  2.999599e+00  2.999462e+00  2.999186e+00  2.998351e+00
-
-``` r
-steps
-```
-
-    ##  [1]    2    2    2    2    2    2    2    2    2    2    2    2    2    2   15
-    ## [16]   33   42   56   83  159  299  365  472  676 1239
-
-``` r
 rbind(e_vec, b, steps)
 ```
 
