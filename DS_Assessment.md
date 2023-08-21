@@ -66,7 +66,7 @@ ggplot(data=t, aes(x=Year, y=`Death toll`, fill=Type)) +
   theme(text = element_text(size = 20)) 
 ```
 
-![](DS_Assessment/Figs/unnamed-chunk-5-1.png?raw=true)<!-- -->
+![](Figs/unnamed-chunk-5-1.png?raw=true)<!-- -->
 
 In the following plot, we can see the top death tolls are 1976 Tangshan
 earthquake with over 400,000 deaths, 1970 Bhola cyclone with 300,000
