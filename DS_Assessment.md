@@ -108,7 +108,7 @@ ggplot(data=t[t$`Death toll` < 2000000,], aes(x=Year, y=`Death toll`, fill=Type)
   theme(text = element_text(size = 20)) 
 ```
 
-![](DS_Assessment_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](Figs/unnamed-chunk-7-1.png)<!-- -->
 
 ## Problem 2
 
@@ -231,4 +231,4 @@ legend("topright", inset = c(-0.3, 0), legend=c("b","Steps"),
 title("Estimates of b and Number of Steps Taken")
 ```
 
-![](DS_Assessment_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](Figs/unnamed-chunk-11-1.png)<!-- -->
