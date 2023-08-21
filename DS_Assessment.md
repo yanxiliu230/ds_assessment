@@ -57,7 +57,7 @@ colors represent different types of natural disasters. The outstanding
 feature of this plot is the 1931 China floods that cause over 2 million
 deaths. And since this number is overwhelmingly high, the other bars are
 compressed. So in the next plot, we are plotting the same graph without
-the 1931 disaster to get a picture of other years’ sitautions
+the 1931 disaster to get a picture of other years’ situations
 
 ``` r
 ggplot(data=t, aes(x=Year, y=`Death toll`, fill=Type)) + 
