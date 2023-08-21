@@ -30,7 +30,7 @@ The graphs give us a clear image that earthquake causes much higher damage than 
 
 ## Problem 2
 
-In this question, we are testing our gradient descent algorithm. Since the initial value, stopping threshold, and maximmum number of steps are not specified in the question, we are setting the values ourselves and setting them constant throughout this test.
+In this question, we are testing our gradient descent algorithm. Since the initial value and stopping threshold of steps are not specified in the question, we are setting the values ourselves and setting them constant throughout this test.
 
 Here we are testing our gradient descent algorithm on randomly generated vectors with a known value of **b = 3**. We are able to see that as the learning rate e lowers, the estimates of b remains stable for a while and then maybe drops a little, while the number of steps taken to reach that final estimates also remains at hundreds at first, and then increases exponentially. In a nutshell, the performance of the algorithm does not necessarily improves with a smaller step size/lower learning rate. In fact, a small step size will cause the number of steps taken to increase quite a lot, becoming computationally expensive.
 
