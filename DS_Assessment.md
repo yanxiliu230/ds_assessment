@@ -125,7 +125,7 @@ gradient_descent <- function(x, y,
     l_derivative <- -2 * sum(x * (y-y_pred))    # derivative of loss function
     b_prev <- b_cur                             # saving the value of current b value
     b_cur <- b_cur - e * l_derivative           # update estimate of b with gradient descnet
-    if (b_cur - b_prev < threshold) {           # test if threshold has been met
+    if (abs(b_cur - b_prev) < threshold) {           # test if threshold has been met
       break
     }
   }
@@ -145,9 +145,7 @@ sum(x * y) / sum(x^2) # the solution
     ## [1] 3
 
 ``` r
-e_vec <- c(seq(from = 0.1, by = -0.02, length.out = 5),
-           seq(from = 0.01, by = -0.002, length.out = 5),
-           seq(from = 0.001, by = -0.0002, length.out = 5),
+e_vec <- c(seq(from = 0.001, by = -0.0002, length.out = 5),
            seq(from = 0.0001, by = -0.00002, length.out = 5),
            seq(from = 0.00001, by = -0.000002, length.out = 5))   # learning rates
 
@@ -162,22 +160,18 @@ for (i in e_vec) {
 rbind(e_vec, b, steps)
 ```
 
-    ##            [,1]       [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
-    ## e_vec       0.1       0.08      0.06      0.04      0.02     0.010     0.008
-    ## b     -260367.3 -166356.01 -93313.66 -41240.19 -10135.60 -2446.641 -1537.915
-    ## steps       2.0       2.00      2.00      2.00      2.00     2.000     2.000
-    ##            [,8]      [,9]     [,10]     [,11]     [,12]  [,13]    [,14]
-    ## e_vec    0.0060    0.0040   0.00200  0.001000  0.000800 0.0006 0.000400
-    ## b     -838.8778 -349.5297 -69.87043 -8.674109 -2.725511 1.1262 2.881021
-    ## steps    2.0000    2.0000   2.00000  2.000000  2.000000 2.0000 2.000000
-    ##           [,15]     [,16]     [,17]     [,18]    [,19]      [,20]      [,21]
-    ## e_vec  0.000200  0.000100  0.000080  0.000060  0.00004   0.000020   0.000010
-    ## b      2.999997  2.999978  2.999972  2.999958  2.99993   2.999849   2.999685
-    ## steps 15.000000 33.000000 42.000000 56.000000 83.00000 159.000000 299.000000
-    ##            [,22]      [,23]      [,24]       [,25]
-    ## e_vec   0.000008   0.000006   0.000004    0.000002
-    ## b       2.999599   2.999462   2.999186    2.998351
-    ## steps 365.000000 472.000000 676.000000 1239.000000
+    ##                 [,1]       [,2]      [,3]  [,4]      [,5]      [,6]      [,7]
+    ## e_vec   1.000000e-03   0.000800  0.000600 4e-04  0.000200  0.000100  0.000080
+    ## b     -1.720875e+134   3.000005  2.999998 3e+00  2.999992  2.999973  2.999964
+    ## steps   1.000000e+03 113.000000 16.000000 6e+00 20.000000 43.000000 54.000000
+    ##            [,8]       [,9]      [,10]     [,11]      [,12]      [,13]
+    ## e_vec  0.000060   0.000040   0.000020   0.00001   0.000008   0.000006
+    ## b      2.999943   2.999913   2.999799   2.99959   2.999486   2.999311
+    ## steps 71.000000 105.000000 198.000000 371.00000 453.000000 585.000000
+    ##            [,14]       [,15]
+    ## e_vec   0.000004    0.000002
+    ## b       2.998959    2.974471
+    ## steps 836.000000 1000.000000
 
 Here we are testing our gradient descent algorithm on randomly generated
 vectors with a known value of b = 3. We are able to see that as the
@@ -189,7 +183,7 @@ does not necessarily improves with a smaller step size/lower learning
 rate. In fact, a small step size will cause the number of steps taken to
 increase quite a lot, becoming computationally expensive.
 
-The algorithms clearly fails at high learning rate till around 0.001. In
+The algorithms clearly fails at high learning rate till around 0.0006. In
 these cases, the gradient descent overshoots and misses the real
 solution. With a big step size, every time we update the estimates for
 b, we change by a lot. But again, whether or not the algorithm
@@ -218,4 +212,4 @@ legend("topright", inset = c(-0.3, 0), legend=c("b","Steps"),
 title("Estimates of b and Number of Steps Taken")
 ```
 
-![](Figs/unnamed-chunk-11-1.png)<!-- -->
+![](Figs/unnamed-chunk-13-1.png)<!-- -->
