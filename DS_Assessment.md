@@ -164,6 +164,7 @@ Here we are testing our gradient descent function with a random generated vector
 
 ``` r
 # test
+set.seed(9)
 x <- runif(n=10, min=1, max=20)
 y <- x * 3
 sum(x * y) / sum(x^2) # the solution
