@@ -29,14 +29,53 @@ library(ggplot2)
 ``` r
 html <- read_html("https://en.wikipedia.org/wiki/List_of_natural_disasters_by_death_toll") # read in
 ```
-
 ``` r
 t_20 <- html_nodes(html, "table")[2] %>% html_table() # 20th century table
+t_20 <- t_20[[1]]                                     # into dataframe
 t_21 <- html_nodes(html, "table")[3] %>% html_table() # 21st century table
-t <- rbind(t_20[[1]], t_21[[1]])                      # merge
+t_21 <- t_21[[1]]                                     # into dataframe
 ```
 
 ``` r
+is.data.frame(t_20)
+```
+
+    ## [1] TRUE
+
+``` r
+is.data.frame(t_21)
+```
+
+    ## [1] TRUE
+
+``` r
+t <- rbind(t_20, t_21)   # merge
+```
+
+``` r
+# take a look
+knitr::kable(head(t_20, 3))
+```
+
+| Year | Death toll  | Event                                | Countries affected | Type              | Date         |
+|-----:|:------------|:-------------------------------------|:-------------------|:------------------|:-------------|
+| 1900 | 6,000–8,000 | 1900 Galveston hurricane             | United States      | Tropical cyclone  | September 9  |
+| 1901 | 9,500       | 1901 eastern United States heat wave | United States      | Heat wave         | June–July    |
+| 1902 | 29,000      | 1902 eruption of Mount Pelée         | Martinique         | Volcanic eruption | April–August |
+
+``` r
+knitr::kable(head(t_21, 3))
+```
+
+| Year | Death toll | Event                   | Countries affected | Type       | Date          |
+|-----:|:-----------|:------------------------|:-------------------|:-----------|:--------------|
+| 2001 | 20,005     | 2001 Gujarat earthquake | India              | Earthquake | January 26    |
+| 2002 | 1,030      | 2002 Indian heat wave   | India              | Heat wave  | May           |
+| 2003 | 72,000     | 2003 European heat wave | Europe             | Heat wave  | July – August |
+
+
+``` r
+# handling death toll
 temp <- t$`Death toll`                              # placeholder so we do not directly work on t
 temp <- str_replace_all(temp, "\\[\\S*\\]", "")     # remove brackets
 temp <- str_replace_all(temp, ",", "")              # remove comma
