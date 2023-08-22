@@ -200,28 +200,26 @@ rbind(e_vec, b, steps)
     ## b       2.998854    2.973413
     ## steps 862.000000 1000.000000
 
-Here we are testing our gradient descent algorithm on randomly generated vectors with a known value of b = 3. We see that as the learning rate e lowers (smaller step size), the estimates of b remains stable for a while and then maybe drops a little, while the number of steps taken to reach that final estimates  remains low and stable at first, and then increases exponentially. In a nutshell, the performance of the algorithm does not necessarily improves with a smaller step size/lower learning rate. In fact, a smaller step size will cause the number of steps taken to increase quite a lot, becoming computationally expensive.
+Here we are testing our gradient descent algorithm on randomly generated vectors with a known value of **b = 3**. We see that as the learning rate **e** lowers (smaller step size), the estimates of b remains stable almost throughout, while the number of steps taken to reach that final estimates remains low and stable at first, and then increases exponentially. In a nutshell, the performance of the algorithm does not necessarily improves with a smaller step size/lower learning rate. In fact, a smaller step size will cause the number of steps taken to increase quite a lot, becoming computationally expensive.
 
-The algorithms clearly fails at high learning rate till around 0.0008. And Any learning rate higher than this (larger step size) will cause the algorithm to fail as well. In these cases, the gradient descent overshoots and misses the real solution. With a big step size, every time we update the estimates for b, we change by a lot. But again, whether or not the algorithm overshoots also depends on the starting point we chooses. Here we did not test multiple starting points. One last note is that since we are multiplying the derivative of L directly with learning rate, the number of points in the vector might also affect at which learning rate the algorithm will fail.
+The algorithms clearly fails at high learning rate/large step size till around $$e=0.0008$$. And any learning rate higher than this (larger step size) will likely cause the algorithm to fail as well. In these cases, the gradient descent **overshoots and misses** the real solution. With a large step size, every time we update the estimates for b, we change it by a lot. But again, whether or not the algorithm overshoots also depends on the initial value of b we chooses. Here we did not test multiple starting points. One last note is that since we are multiplying the derivative of L directly with learning rate, the number of points in the vector might also affect the learning rate at which the algorithm will fail.
 
 ``` r
 par(mar=c(5, 4, 4, 8) + 0.3, xpd=TRUE)
 
-plot(b,  axes=FALSE,  xlab="", ylab="", type="o", pch=20)
+plot(b, xlab="", ylab="", type="o", pch=20, axes=FALSE)
 axis(2, ylim=c(2,3))
-mtext("Estimates for b",side=2,line=2)
+mtext("Estimates for b", side=2, line=2)
 box()
 
 par(new=TRUE)
-plot(steps,  xlab="", ylab="",  
-    axes=FALSE, type="o", pch=18, col="red")
-axis(4, ylim=c(0,20000),col.axis="red")
+plot(steps,  xlab="", ylab="", type="o", pch=18, col="red", axes=FALSE)
+axis(4, ylim=c(0,20000), col.axis="red")
 mtext("Steps", side=4, line=2, col="red")
 
-mtext("Learning Rate (e)",side=1)
+mtext("Learning Rate (e)", side=1)
 
-legend("topright", inset = c(-0.3, 0), legend=c("b","Steps"),
-  text.col=c("black","red"),pch=c(20,18),col=c("black","red"))
+legend("topright", inset = c(-0.3, 0), legend=c("b","Steps"), text.col=c("black","red"), pch=c(20,18), col=c("black","red"))
 
 title("Estimates of b and Number of Steps Taken")
 ```
