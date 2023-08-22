@@ -79,7 +79,7 @@ knitr::kable(head(t_21, 3))
 temp <- t$`Death toll`                              # placeholder so we do not directly work on t
 temp <- str_replace_all(temp, "\\[\\S*\\]", "")     # remove brackets
 temp <- str_replace_all(temp, ",", "")              # remove comma
-temp <- str_replace_all(temp, "\\+", "")            # remove plus sign
+temp <- str_replace_all(temp, "\\+|\\-$", "")       # remove plus sign (upper bound) and - sign for lower bound (just in case)
 temp <- lapply(str_split(temp, "\\D+"), as.numeric) # as numeric
 temp <- lapply(temp, function(x) {
   if (length(x) > 1) {
