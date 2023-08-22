@@ -142,7 +142,7 @@ t[t$`Death toll` < 2000000,] %>% group_by(Type) %>%
 ``` r
 gradient_descent <- function(x, y, 
                              e = 0.001,        # learning rates
-                             b_cur = 0.1,      # starting estimate of b
+                             b_cur = 1,        # starting estimate of b
                              threshold = 1e-5, # stopping threshold
                              steps = 100000    # maximum number of steps in case of infinite loop
 ) {
@@ -152,7 +152,7 @@ gradient_descent <- function(x, y,
     l_derivative <- -2 * sum(x * (y-y_pred))    # derivative of loss function
     b_prev <- b_cur                             # saving the value of current b value
     b_cur <- b_cur - e * l_derivative           # update estimate of b with gradient descnet
-    if (abs(b_cur - b_prev) < threshold) {           # test if threshold has been met
+    if (abs(b_cur - b_prev) < threshold) {      # test if threshold has been met
       break
     }
   }
@@ -187,18 +187,18 @@ for (i in e_vec) {
 rbind(e_vec, b, steps)
 ```
 
-    ##                 [,1]       [,2]      [,3]  [,4]      [,5]      [,6]      [,7]
-    ## e_vec   1.000000e-03   0.000800  0.000600 4e-04  0.000200  0.000100  0.000080
-    ## b     -1.720875e+134   3.000005  2.999998 3e+00  2.999992  2.999973  2.999964
-    ## steps   1.000000e+03 113.000000 16.000000 6e+00 20.000000 43.000000 54.000000
-    ##            [,8]       [,9]      [,10]     [,11]      [,12]      [,13]
-    ## e_vec  0.000060   0.000040   0.000020   0.00001   0.000008   0.000006
-    ## b      2.999943   2.999913   2.999799   2.99959   2.999486   2.999311
-    ## steps 71.000000 105.000000 198.000000 371.00000 453.000000 585.000000
+    ##                [,1]      [,2]      [,3]  [,4]      [,5]      [,6]      [,7]
+    ## e_vec  1.000000e-03  0.000800  0.000600 4e-04  0.000200  0.000100  0.000080
+    ## b     -1.267143e+63  3.000004  2.999999 3e+00  2.999992  2.999964  2.999959
+    ## steps  1.000000e+03 41.000000 12.000000 8e+00 22.000000 45.000000 57.000000
+    ##            [,8]       [,9]      [,10]      [,11]      [,12]      [,13]
+    ## e_vec  0.000060   0.000040   0.000020   0.000010   0.000008   0.000006
+    ## b      2.999938   2.999902   2.999782   2.999555   2.999437   2.999240
+    ## steps 75.000000 110.000000 207.000000 386.000000 470.000000 605.000000
     ##            [,14]       [,15]
     ## e_vec   0.000004    0.000002
-    ## b       2.998959    2.974471
-    ## steps 836.000000 1000.000000
+    ## b       2.998854    2.973413
+    ## steps 862.000000 1000.000000
 
 Here we are testing our gradient descent algorithm on randomly generated vectors with a known value of b = 3. We see that as the learning rate e lowers (smaller step size), the estimates of b remains stable for a while and then maybe drops a little, while the number of steps taken to reach that final estimates  remains low and stable at first, and then increases exponentially. In a nutshell, the performance of the algorithm does not necessarily improves with a smaller step size/lower learning rate. In fact, a smaller step size will cause the number of steps taken to increase quite a lot, becoming computationally expensive.
 
