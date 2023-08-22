@@ -30,10 +30,10 @@ The graphs give us a clear image that earthquake causes much higher damage than 
 
 ## Problem 2
 
-In this question, we are testing our gradient descent algorithm. Since the initial value and stopping threshold of steps are not specified in the question, we are setting the values ourselves and setting them constant throughout this test.
+In this question, we are testing our gradient descent algorithm. Since the initial value and stopping threshold are not specified in the question, we are setting the values ourselves and making them constant throughout this test.
 
-Here we are testing our gradient descent algorithm on randomly generated vectors with a known value of **b = 3**. We are able to see that as the learning rate **e** lowers, the estimates of b remains stable for a while and then maybe drops a little, while the number of steps taken to reach that final estimates also remains low at first, and then increases exponentially. In a nutshell, the performance of the algorithm does not necessarily improve with a smaller step size/lower learning rate. In fact, a small step size will cause the number of steps taken to increase quite a lot, becoming computationally expensive.
+Here we are testing our gradient descent algorithm on randomly generated vectors with a known value of **b = 3**. We see that as the learning rate **e** lowers (smaller step size), the estimates of b remains stable for a while and then maybe drops a little, while the number of steps taken to reach that final estimates  remains low and stable at first, and then increases exponentially. In a nutshell, the performance of the algorithm does not necessarily improves with a smaller step size/lower learning rate. In fact, a smaller step size will cause the number of steps taken to increase quite a lot, becoming computationally expensive.
 
-The algorithms clearly fails at high learning rate till around 0.001. In these cases, the gradient descent overshoots and misses the real solution. With a big step size, every time we update the estimates for b, we change it by a lot. But again, whether or not the algorithm overshoots also depends on the starting point we chooses. Here we did not test multiple starting points.
+The algorithms clearly fails at high learning rate till around 0.0008. And Any learning rate higher than this (larger step size) will cause the algorithm to fail as well. In these cases, the gradient descent overshoots and misses the real solution. With a big step size, every time we update the estimates for b, we change by a lot. But again, whether or not the algorithm overshoots also depends on the starting point we chooses. Here we did not test multiple starting points.
 
 ![](plots/p2.png)<!-- -->
