@@ -177,7 +177,7 @@ Here we are testing our gradient descent algorithm on randomly generated
 vectors with a known value of b = 3. We are able to see that as the
 learning rate e lowers, the estimates of b remains stable for a while
 and then maybe drops a little, while the number of steps taken to reach
-that final estimates also remains at hundreds at first, and then
+that final estimates also remains low at first, and then
 increases exponentially. In a nutshell, the performance of the algorithm
 does not necessarily improves with a smaller step size/lower learning
 rate. In fact, a small step size will cause the number of steps taken to
