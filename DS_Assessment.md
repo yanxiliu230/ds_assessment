@@ -181,8 +181,9 @@ b <- c()
 steps <- c()
 
 for (i in e_vec) {
-  b <- c(b, gradient_descent(x, y, e = i)[1])
-  steps <- c(steps, gradient_descent(x, y, e = i)[2])
+  run <- gradient_descent(x, y, e = i)
+  b <- c(b, run[1])
+  steps <- c(steps, run2[2])
 }
 
 rbind(e_vec, b, steps)
