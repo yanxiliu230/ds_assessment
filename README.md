@@ -19,13 +19,13 @@ In this question, we are seeing the death tolls of each year's deadliest natural
 
 Below we have a bar plot of death toll over the years. The different colors represent different types of natural disasters. The outstanding feature of this plot is the 1931 China floods that cause over 2 million deaths. And since this number is overwhelmingly high, the other bars are compressed. Nonetheless, we still get some sense that most of the high bars (meaning high death tolls in that year) are brown/orange and purple, representing earthquake and tsunami. So in the next plot, we are plotting the same graph without the 1931 disaster to get a better picture of other years' situations
 
-![](Figs/unnamed-chunk-5-1.png)<!-- -->
+![](plots/p1-1.png)<!-- -->
 
 In the following plot with 1931 disaster removed, we can see the top death tolls are 1976 Tangshan earthquake with over 400,000 deaths, 1970 Bhola cyclone with 300,000 deaths, 1920 Haiyuan earthquakes with over 200,000 deaths, 1975 Typhoon Nina with over 200,000 deaths.
 
 The graphs give us a clear image that earthquake causes much higher damage than other disasters, followed by cyclone/typhoon in general. They both happen the most frequently, and cause higher number of deaths. Removing the 1931 disasters, the next most severe disasters are floods and heat waves, shown in green color in the plot. Volcanic eruption, avalanche, landslide, and limnic eruption are less frequent and less severe comparatively.
 
-![](Figs/unnamed-chunk-7-1.png)<!-- -->
+![](plots/p1-2.png)<!-- -->
 
 
 ## Problem 2
@@ -36,4 +36,4 @@ Here we are testing our gradient descent algorithm on randomly generated vectors
 
 The algorithms clearly fails at high learning rate till around 0.001. In these cases, the gradient descent overshoots and misses the real solution. With a big step size, every time we update the estimates for b, we change it by a lot. But again, whether or not the algorithm overshoots also depends on the starting point we chooses. Here we did not test multiple starting points.
 
-![](Figs/unnamed-chunk-13-1.png)<!-- -->
+![](plots/p2.png)<!-- -->
