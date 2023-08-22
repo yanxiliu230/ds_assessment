@@ -82,6 +82,16 @@ avalanche, landslide, and limnic eruption are less frequent and less
 severe comparatively.
 
 ``` r
+ggplot(data=t[t$`Death toll` < 2000000,], aes(x=Year, y=`Death toll`, fill=Type)) + 
+  geom_bar(stat="identity")  +
+  ggtitle("Death Toll of Natural Disasters by Year (1931 Removed)")  + 
+  theme(text = element_text(size = 20)) 
+```
+
+![](Figs/unnamed-chunk-7-1.png)<!-- -->
+
+
+``` r
 t[t$`Death toll` < 2000000,] %>% group_by(Type) %>% 
   summarise(count = n(), death = sum(`Death toll`)) %>%
   arrange(desc(count))
@@ -101,14 +111,6 @@ t[t$`Death toll` < 2000000,] %>% group_by(Type) %>%
     ##  9 Limnic eruption             1    1746
     ## 10 Tropical cyclone, Flood     1    3123
 
-``` r
-ggplot(data=t[t$`Death toll` < 2000000,], aes(x=Year, y=`Death toll`, fill=Type)) + 
-  geom_bar(stat="identity")  +
-  ggtitle("Death Toll of Natural Disasters by Year (1931 Removed)")  + 
-  theme(text = element_text(size = 20)) 
-```
-
-![](Figs/unnamed-chunk-7-1.png)<!-- -->
 
 ## Problem 2
 
