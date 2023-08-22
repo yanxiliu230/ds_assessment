@@ -183,7 +183,7 @@ steps <- c()
 for (i in e_vec) {
   run <- gradient_descent(x, y, e = i)
   b <- c(b, run[1])
-  steps <- c(steps, run2[2])
+  steps <- c(steps, run[2])
 }
 
 rbind(e_vec, b, steps)
