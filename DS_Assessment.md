@@ -91,7 +91,7 @@ temp <- lapply(temp, function(x) {
 t$`Death toll` <- unlist(temp)                      # put back
 ```
 
-Below we have a bar plot of death toll over the years. The vertical axis represent the death toll, and the horizontal axis represents the years. The different colors represent different types of natural disasters. The outstanding feature of this plot is the 1931 China floods that cause over 2 million deaths. And since this number is overwhelmingly high, the other bars are compressed. Nonetheless, we still get some sense that most of the high bars (meaning high death tolls in that year) are brown/orange and purple, representing earthquake and tsunami. So in the next plot, we are plotting the same graph without the 1931 disaster to get a better picture of other years' situations
+Below we have a bar plot of death toll over the years. The vertical axis represents the death toll, and the horizontal axis represents the years. The different colors represent different types of natural disasters. The outstanding feature of this plot is the 1931 China floods that cause over 2 million deaths. And since this number is overwhelmingly high, the other bars are compressed. Nonetheless, we still get some sense that most of the high bars (meaning high death tolls in that year) are brown/orange and purple, representing earthquake and tsunami. So in the next plot, we are plotting the same graph without the 1931 disaster to get a better picture of other years' situations
 
 ``` r
 ggplot(data=t, aes(x=Year, y=`Death toll`, fill=Type)) + 
