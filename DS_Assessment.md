@@ -83,7 +83,7 @@ temp <- str_replace_all(temp, "\\+|\\-$", "")       # remove plus sign (upper bo
 temp <- lapply(str_split(temp, "\\D+"), as.numeric) # as numeric
 temp <- lapply(temp, function(x) {
   if (length(x) > 1) {
-    (x[1] + x[2])/2
+    mean(x)
   } else {
     x[1]
   }
