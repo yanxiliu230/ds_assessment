@@ -36,4 +36,4 @@ Here we are testing our gradient descent algorithm on randomly generated vectors
 
 The algorithms clearly fails at high learning rate/large step size till around $e=0.0008$. And any learning rate higher than this (larger step size) will likely cause the algorithm to fail as well. In these cases, the gradient descent **overshoots and misses** the real solution. With a large step size, every time we update the estimates for b, we change it by a lot. But again, whether or not the algorithm overshoots also depends on the initial value of b we choose. Here we did not test multiple starting points. One last note is that in our case since we are multiplying the derivative of L directly with learning rate, the number of points in the vector might also affect the learning rate at which the algorithm will fail.
 
-![](plots/p2.png)<!-- -->
+![](plots/p2-1.png)<!-- -->
