@@ -148,23 +148,21 @@ gradient_descent <- function(x, y,
                              ) {
   i <- 1
   for (i in seq_len(steps)) {
-    y_pred <- b_cur * x                         # predicted y values
-    l_derivative <- -2 * sum(x * (y-y_pred))    # derivative of loss function
-    b_prev <- b_cur                             # saving the value of current b value
-    b_cur <- b_cur - e * l_derivative           # update estimate of b with gradient descnet
-    if (abs(b_cur - b_prev) < threshold) {      # test if threshold has been met
+    y_pred <- b_cur * x
+    l_derivative <- -2 * sum(x * (y-y_pred))
+    b_prev <- b_cur
+    b_cur <- b_cur - e * l_derivative
+    if (abs(b_cur - b_prev) < threshold) {
       break
     }
   }
-  c(b_cur, i)                                   # output
+  c(b_cur, i)   # output
 }
 ```
 
-Here we are testing our gradient descent function with a random generated vector of 10 numbers, and set gradient to be 3
-
 ``` r
 # test
-set.seed(9)
+set.seed(10)
 x <- rnorm(10, 10, 10)   # randomly generated normal vector of x
 y <- x * 3
 sum(x * y) / sum(x^2) # the solution
@@ -175,7 +173,7 @@ sum(x * y) / sum(x^2) # the solution
 ``` r
 e_vec <- c(seq(from = 0.001, by = -0.0002, length.out = 5),
            seq(from = 0.0001, by = -0.00002, length.out = 5),
-           seq(from = 0.00001, by = -0.000002, length.out = 5))   # learning rates
+           seq(from = 0.00001, by = -0.000002, length.out = 5))
 
 b <- c()
 steps <- c()
@@ -185,31 +183,36 @@ for (i in e_vec) {
   b <- c(b, run[1])
   steps <- c(steps, run[2])
 }
-
 rbind(e_vec, b, steps)
 ```
 
-    ##                 [,1]      [,2]      [,3]     [,4]      [,5]      [,6]      [,7]
-    ## e_vec   1.000000e-03  0.000800  0.000600 0.000400  0.000200  0.000100  0.000080
-    ## b     -7.866203e+157  3.000003  2.999999 2.999999  2.999988  2.999964  2.999954
-    ## steps   1.000000e+04 29.000000 10.000000 9.000000 23.000000 48.000000 60.000000
-    ##            [,8]       [,9]      [,10]     [,11]      [,12]      [,13]
-    ## e_vec  0.000060   0.000040   0.000020   0.00001   0.000008   0.000006
-    ## b      2.999933   2.999895   2.999769   2.99952   2.999403   2.999197
-    ## steps 79.000000 116.000000 218.000000 405.00000 494.000000 636.000000
-    ##            [,14]       [,15]
-    ## e_vec   0.000004    0.000002
-    ## b       2.998792    2.997556
-    ## steps 906.000000 1643.000000
+    ##            [,1]     [,2]     [,3]      [,4]     [,5]     [,6]      [,7]
+    ## e_vec  0.001000 0.000800 0.000600  0.000400  0.00020  0.00010  0.000080
+    ## b      3.000002 3.000001 2.999999  2.999996  2.99998  2.99994  2.999927
+    ## steps 15.000000 7.000000 8.000000 16.000000 35.00000 69.00000 86.000000
+    ##             [,8]       [,9]      [,10]      [,11]      [,12]      [,13]
+    ## e_vec   0.000060   0.000040   0.000020   0.000010   0.000008   0.000006
+    ## b       2.999892   2.999834   2.999655   2.999298   2.999121   2.998829
+    ## steps 112.000000 163.000000 305.000000 564.000000 686.000000 882.000000
+    ##             [,14]       [,15]
+    ## e_vec    0.000004    0.000002
+    ## b        2.998227    2.996450
+    ## steps 1251.000000 2258.000000
 
-Here we are testing our gradient descent algorithm on randomly generated vectors with a known value of **b = 3**. We see that as the learning rate **e** lowers (smaller step size), the estimates of b remains stable almost throughout, while the number of steps taken to reach that final estimates decreases first, then remains low and stable, and at last increases exponentially. In a nutshell, the performance of the algorithm does not necessarily improve with a smaller step size/lower learning rate. In fact, a smaller step size will cause the number of steps taken to increase quite a lot, becoming computationally expensive.
-
-The algorithms clearly fails at high learning rate/large step size till around $e=0.0008$. And any learning rate higher than this (larger step size) will likely cause the algorithm to fail as well. In these cases, the gradient descent **overshoots and misses** the real solution. With a large step size, every time we update the estimates for b, we change it by a lot. But again, whether or not the algorithm overshoots also depends on the initial value of b we choose. Here we did not test multiple starting points. One last note is that in our case since we are multiplying the derivative of L directly with learning rate, the number of points in the vector might also affect the learning rate at which the algorithm will fail.
+Here we are testing our gradient descent algorithm on randomly generated
+vectors with a known value of **b = 3**. We see that as the learning
+rate **e** lowers (smaller step size), the estimates of b remains stable
+almost throughout, while the number of steps taken to reach that final
+estimates remains low and stable at first, and then increases
+exponentially. In a nutshell, the performance of the algorithm does not
+necessarily improve with a smaller step size/lower learning rate. In
+fact, a smaller step size will cause the number of steps taken to
+increase quite a lot, becoming computationally expensive.
 
 ``` r
 par(mar=c(5, 4, 4, 8) + 0.3, xpd=TRUE)
 
-plot(b, xlab="", ylab="", type="o", pch=20, axes=FALSE)
+plot(b, xlab="", ylab="", type="o", pch=20, axes=FALSE, ylim=c(2.8,3))
 axis(2)
 mtext("Estimates for b", side=2, line=2)
 box()
@@ -227,3 +230,30 @@ legend("topright", inset = c(-0.3, 0), legend=c("b","Steps"), text.col=c("black"
 ```
 
 ![](plots/p2.png)<!-- -->
+
+The algorithms clearly fails at high learning rate/large step size.
+Below I give two examples of failed trials, at learning rate $e=0.002$
+and $e=0.004$. Both used up all the steps allowed but output extremely
+high values, far away from the number we expect. In these cases, the
+gradient descent fails to converge; it **overshoots and misses** the
+real solution. With a large step size, every time we update the
+estimates for b, we change by a lot.
+
+But again, whether or not the algorithm overshoots also depends on the
+initial value of b we choose. Here we did not test multiple starting
+points. One last note is that in our case since we are multiplying the
+derivative of L directly with learning rate, the number of points in the
+vector might also affect the learning rate at which the algorithm will
+fail.
+
+``` r
+gradient_descent(x, y, e=0.002, steps=1000)
+```
+
+    ## [1] -7.234017e+255   1.000000e+03
+
+``` r
+gradient_descent(x, y, e=0.004, steps=100)
+```
+
+    ## [1] -3.97361e+66  1.00000e+02
