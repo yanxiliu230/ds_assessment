@@ -17,7 +17,7 @@ In this question, we are seeing the death tolls of each year's deadliest natural
 | 2002 | 1,030      | 2002 Indian heat wave                    | India                                                    | Heat wave           | May           |
 | 2003 | 72,000     | 2003 European heat wave                  | Europe                                                   | Heat wave           | July – August |
 
-Below we have a bar plot of death toll over the years. The different colors represent different types of natural disasters. The outstanding feature of this plot is the 1931 China floods that cause over 2 million deaths. And since this number is overwhelmingly high, the other bars are compressed. Nonetheless, we still get some sense that most of the high bars (meaning high death tolls in that year) are brown/orange and purple, representing earthquake and tsunami. So in the next plot, we are plotting the same graph without the 1931 disaster to get a better picture of other years' situations
+Below we have a bar plot of death toll over the years. The vertical axis represent the death toll, and the horizontal axis represents the years. The different colors represent different types of natural disasters. The outstanding feature of this plot is the 1931 China floods that cause over 2 million deaths. And since this number is overwhelmingly high, the other bars are compressed. Nonetheless, we still get some sense that most of the high bars (meaning high death tolls in that year) are brown/orange and purple, representing earthquake and tsunami. So in the next plot, we are plotting the same graph without the 1931 disaster to get a better picture of other years' situations
 
 ![](plots/p1-1.png)<!-- -->
 
