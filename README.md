@@ -34,8 +34,8 @@ In this question, we are testing our gradient descent algorithm. Since the initi
 
 Here we are testing our gradient descent algorithm on randomly generated vectors with a known value of **b = 3**. We see that as the learning rate **e** lowers (smaller step size), the estimates of b remains stable almost throughout, while the number of steps taken to reach that final estimates remains low and stable at first, and then increases exponentially. In a nutshell, the performance of the algorithm does not necessarily improve with a smaller step size/lower learning rate. In fact, a smaller step size will cause the number of steps taken to increase quite a lot, becoming computationally expensive.
 
-The algorithms clearly fails at high learning rate/large step size. In these cases, the gradient descent fails to converge; it **overshoots and misses** the real solution. With a large step size, every time we update the estimates for b, we change by a lot.
+![](plots/p2-1.png)<!-- -->
+
+The algorithms fails at high learning rate/large step size. In these cases, the gradient descent fails to converge; it **overshoots and misses** the real solution. With a large step size, every time we update the estimates for b, we change by a lot.
 
 But again, whether or not the algorithm overshoots also depends on the initial value of b we choose. Here we did not test multiple starting points. One last note is that in our case since we are multiplying the derivative of L directly with learning rate, the number of points in the vector might also affect the learning rate at which the algorithm will fail.
-
-![](plots/p2-1.png)<!-- -->
