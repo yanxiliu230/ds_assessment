@@ -141,11 +141,11 @@ t[t$`Death toll` < 2000000,] %>% group_by(Type) %>%
 
 ``` r
 gradient_descent <- function(x, y, 
-                             e = 0.001,        # learning rates
-                             b_cur = 1,        # starting estimate of b
+                             e = 0.001,        # learning rate
+                             b_cur = 1,        # starting value of b
                              threshold = 1e-5, # stopping threshold
-                             steps = 100000    # maximum number of steps in case of infinite loop
-) {
+                             steps = 100000    # maximum number of steps in case taking too long
+                             ) {
   i <- 1
   for (i in seq_len(steps)) {
     y_pred <- b_cur * x                         # predicted y values
