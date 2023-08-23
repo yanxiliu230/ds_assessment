@@ -229,7 +229,7 @@ title("Estimates of b and Number of Steps Taken")
 legend("topright", inset = c(-0.3, 0), legend=c("b","Steps"), text.col=c("black","red"), pch=c(20,18), col=c("black","red"))
 ```
 
-![](plots/p2.png)<!-- -->
+![](plots/p2-1.png)<!-- -->
 
 The algorithms clearly fails at high learning rate/large step size.
 Below I give two examples of failed trials, at learning rate $e=0.002$
